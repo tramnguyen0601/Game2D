@@ -2,6 +2,7 @@
 //Variable: toc do nhay, toc do di chuyen, player muon dieu khien vat ly: Rigidbody2D
 //Function: Nhay, di chuyen
 //dùng thư viện có sẵn của unity namespace
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController:MonoBehaviour
@@ -12,33 +13,88 @@ public class PlayerController:MonoBehaviour
     public float jumpHeight;
     //vat ly
     private Rigidbody2D rb;
+    //check 
+    private bool jumpRequested;
+    //check ground
+    public bool isGrounded;
+    //check nhay 2 lan
+    private int jumpCount = 0;
+    public int maxJump;
+    //Doi tuong có vi tri trong khong gian (kiem tra dat o vi tri nao)
+    public Transform groundCheck; //có position, rotation, size
+    // ban kinh kiem tra mat dat
+    public float checkgroundRadius; // check ban kính chan player & ground
+    //xac dinh loai vat the nao la mat dat
+    public LayerMask groundLayer;
     void Start()
     {
         rb= GetComponent<Rigidbody2D>();
     }
+    
     void FixedUpdate()
-    {
-       
-    }
-    void Update()
     {    
-        // if(Keyboard.current.spaceKey.isPressed)
-        // {
-        //     rb.AddForce(Vector2.up*jumpHeight);
-        // }
-         Debug.Log("Update đang chạy");
-        //if(Input.GetKey(KeyCode.LeftArrow))
+        Move();
+        
+        if(jumpRequested)
+        {   
+            Jump();
+            jumpRequested = false; //xóa để không tự động nhảy khi chưa nhấp
+        }
+    }
+    void Update() 
+    {    //kiem tra có dang dung dat khong
+         isGrounded = Physics2D.OverlapCircle(groundCheck.position,checkgroundRadius,groundLayer);
+
+         //Check neu cham dat thi reset so lan nhay
+        if (isGrounded)
+        {
+            jumpCount = 0;
+        }
+        if(Keyboard.current.upArrowKey.wasPressedThisFrame) //xử lý ở đây để không bị 
+        {   
+            if(jumpCount < maxJump)
+            {
+               jumpRequested = true;
+            }
+        }
+    }
+    // void OnCollisionEnter2D(Collision2D collision)
+    // {   
+    //     if (collision.gameObject.CompareTag("Ground"))
+    //     {
+    //         isGrounded= true;
+    //         Debug.Log("Ground = TRUE");
+    //     }
+    // }
+    // void OnCollisionExit2D(Collision2D collision)
+    // {
+    //     if (collision.gameObject.CompareTag("Ground"))
+    //     {
+    //         isGrounded = false;
+    //         Debug.Log("Ground = FALSE");
+    //     }
+    // }
+    void Jump()
+    {
+        rb.linearVelocity= new Vector2(rb.linearVelocity.x,jumpHeight);
+        jumpCount ++;
+    }
+    void Move()
+    {
+       float moveInput = 0;
         if(Keyboard.current.rightArrowKey.isPressed)
         {
-            rb.linearVelocity = new Vector2(moveSpeed,rb.linearVelocity.y);
+            Debug.Log("Right Pressed");
+            moveInput = 1;
         }
         if(Keyboard.current.leftArrowKey.isPressed)
         {
-            rb.linearVelocity= new Vector2(-moveSpeed,rb.linearVelocity.y);
+            Debug.Log("Left Pressed");
+            moveInput = -1;
+            
         }
-        if(Keyboard.current.upArrowKey.wasPressedThisFrame)
-        {
-            rb.linearVelocity= new Vector2(rb.linearVelocity.x,jumpHeight);
-        }
+
+        rb.linearVelocity= new Vector2(moveInput * moveSpeed,rb.linearVelocity.y);
+ 
     }
 }

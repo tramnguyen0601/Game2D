@@ -255,13 +255,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GPJ_2D_Platformer_Sprites_6
+      name: Sprites_6
       rect:
         serializedVersion: 2
-        x: 24
+        x: 16
         y: 80
-        width: 7
-        height: 12
+        width: 14
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -525,10 +525,10 @@ TextureImporter:
       GPJ_2D_Platformer_Sprites_3: -2114631204
       GPJ_2D_Platformer_Sprites_4: -461212787
       GPJ_2D_Platformer_Sprites_5: 1564390201
-      GPJ_2D_Platformer_Sprites_6: 904296842
       GPJ_2D_Platformer_Sprites_7: -1257818575
       GPJ_2D_Platformer_Sprites_8: -1049883046
       GPJ_2D_Platformer_Sprites_9: -1299256439
+      Sprites_6: 904296842
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
