@@ -1,8 +1,8 @@
-
 using UnityEngine;
 
-public class KillPlayer : MonoBehaviour
-{   public int penalty;
+public class Pickup : MonoBehaviour
+{   
+    public int score;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,15 +14,13 @@ public class KillPlayer : MonoBehaviour
     {
         
     }
-    //Phat hien Player đi vao vung Trigger
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.name == "Player")
+        if (collision.name == "Player")
         {
-            LevelManager.instance.RespawnPlayer();
-            ScoreManager.instance.AddPoints(-penalty);
+            ScoreManager.instance.AddPoints(score);
+            Destroy(gameObject);
         }
     }
-
-
+        
 }

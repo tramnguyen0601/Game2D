@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Checkpoint : MonoBehaviour
-{   
+public class MainMenu : MonoBehaviour
+{    
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -11,13 +13,14 @@ public class Checkpoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        
     }
-    void OnTriggerEnter2D(Collider2D collision)
+    public void PlayGame()
+    {   
+        SceneManager.LoadScene("Level_1");
+    }
+    public void QuitGame()
     {
-        if(collision.name == "Player")
-        {
-            LevelManager.instance.UpdateCheckPoint(transform.position);
-        }
+        Application.Quit();
     }
 }

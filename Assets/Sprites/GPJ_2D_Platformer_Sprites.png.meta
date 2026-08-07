@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GPJ_2D_Platformer_Sprites_0
+      name: Player
       rect:
         serializedVersion: 2
         x: 0
@@ -496,6 +496,50 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Player_Walking_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 112
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab7188694085f3f46a59e2698a606369
+      internalID: -945920304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Walking_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 112
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f77998b165566364fab1952398f3a1ac
+      internalID: -2063338113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -512,7 +556,6 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      GPJ_2D_Platformer_Sprites_0: -610399772
       GPJ_2D_Platformer_Sprites_1: -18997025
       GPJ_2D_Platformer_Sprites_10: 862172157
       GPJ_2D_Platformer_Sprites_11: -1857344208
@@ -528,6 +571,9 @@ TextureImporter:
       GPJ_2D_Platformer_Sprites_7: -1257818575
       GPJ_2D_Platformer_Sprites_8: -1049883046
       GPJ_2D_Platformer_Sprites_9: -1299256439
+      Player: -610399772
+      Player_Walking_1: -945920304
+      Player_Walking_2: -2063338113
       Sprites_6: 904296842
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
