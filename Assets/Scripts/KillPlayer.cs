@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class KillPlayer : MonoBehaviour
 {   public int penalty;
+    public int damage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,6 +21,7 @@ public class KillPlayer : MonoBehaviour
         if(collision.name == "Player")
         {
             LevelManager.instance.RespawnPlayer();
+            HeartManager.instance.TakeDamge(damage);
             ScoreManager.instance.AddPoints(-penalty);
         }
     }

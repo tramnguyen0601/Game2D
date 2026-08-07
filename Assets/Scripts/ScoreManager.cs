@@ -6,8 +6,6 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
     private int score;
     public Text scoreText;
-    private int heart;
-    public int heartText;
     void Awake()
     {
         instance = this;

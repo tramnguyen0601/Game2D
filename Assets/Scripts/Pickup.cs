@@ -19,7 +19,7 @@ public class Pickup : MonoBehaviour
         if (collision.name == "Player")
         {
             ScoreManager.instance.AddPoints(score);
-            Destroy(gameObject);
+            Destroy(gameObject);// huy coin
         }
     }
         
