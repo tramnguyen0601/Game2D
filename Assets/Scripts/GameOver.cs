@@ -20,8 +20,8 @@ public class GameOver : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("Level_1");
     }
-    public void QuitGame()
+    public void QuitMainMenu()
     {
-        Application.Quit();
+        SceneManager.LoadScene("MainMenu");
     }
 }
