@@ -2,9 +2,10 @@
 //Variable: toc do nhay, toc do di chuyen, player muon dieu khien vat ly: Rigidbody2D
 //Function: Nhay, di chuyen
 //dùng thư viện có sẵn của unity namespace
-using System.Runtime.CompilerServices;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public class PlayerController:MonoBehaviour
 {   
     //khai bao bien luu toc do di chuyen cua player: trai phai
@@ -26,9 +27,11 @@ public class PlayerController:MonoBehaviour
     public float checkgroundRadius; // check ban kính chan player & ground
     //xac dinh loai vat the nao la mat dat
     public LayerMask groundLayer;
+    private Animator animator;
     void Start()
     {
         rb= GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     
     void FixedUpdate()
@@ -44,7 +47,7 @@ public class PlayerController:MonoBehaviour
     void Update() 
     {    //kiem tra có dang dung dat khong
          isGrounded = Physics2D.OverlapCircle(groundCheck.position,checkgroundRadius,groundLayer);
-
+         animator.SetBool("Grounded",isGrounded);
          //Check neu cham dat thi reset so lan nhay
         if (isGrounded)
         {
@@ -78,6 +81,7 @@ public class PlayerController:MonoBehaviour
     {
         rb.linearVelocity= new Vector2(rb.linearVelocity.x,jumpHeight);
         jumpCount ++;
+        //animator.SetFloat("Speed",MathF.Abs(jumpHeight));
     }
     void Move()
     {
@@ -91,10 +95,10 @@ public class PlayerController:MonoBehaviour
         {
             Debug.Log("Left Pressed");
             moveInput = -1;
-            
         }
 
         rb.linearVelocity= new Vector2(moveInput * moveSpeed,rb.linearVelocity.y);
- 
-    }
-}
+        animator.SetFloat("Speed",MathF.Abs(moveInput));
+        
+       }
+} 

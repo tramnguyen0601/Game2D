@@ -2944,7 +2944,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 5bf31cee5157246458945a0723b10428, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -10900,7 +10900,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1207581077}
         m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
-        m_MethodName: QuitGame
+        m_MethodName: QuitMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
