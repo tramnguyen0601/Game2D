@@ -28,6 +28,8 @@ public class PlayerController:MonoBehaviour
     //xac dinh loai vat the nao la mat dat
     public LayerMask groundLayer;
     private Animator animator;
+    //check trang thái quay: mặc định bên phải
+    private bool facingRight = true;
     void Start()
     {
         rb= GetComponent<Rigidbody2D>();
@@ -47,6 +49,7 @@ public class PlayerController:MonoBehaviour
     void Update() 
     {    //kiem tra có dang dung dat khong
          isGrounded = Physics2D.OverlapCircle(groundCheck.position,checkgroundRadius,groundLayer);
+         Debug.Log("isGrounded"+ isGrounded);
          animator.SetBool("Grounded",isGrounded);
          //Check neu cham dat thi reset so lan nhay
         if (isGrounded)
@@ -61,44 +64,50 @@ public class PlayerController:MonoBehaviour
             }
         }
     }
-    // void OnCollisionEnter2D(Collision2D collision)
-    // {   
-    //     if (collision.gameObject.CompareTag("Ground"))
-    //     {
-    //         isGrounded= true;
-    //         Debug.Log("Ground = TRUE");
-    //     }
-    // }
-    // void OnCollisionExit2D(Collision2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Ground"))
-    //     {
-    //         isGrounded = false;
-    //         Debug.Log("Ground = FALSE");
-    //     }
-    // }
+    
     void Jump()
     {
         rb.linearVelocity= new Vector2(rb.linearVelocity.x,jumpHeight);
         jumpCount ++;
-        //animator.SetFloat("Speed",MathF.Abs(jumpHeight));
     }
     void Move()
     {
        float moveInput = 0;
         if(Keyboard.current.rightArrowKey.isPressed)
         {
-            Debug.Log("Right Pressed");
+            //Debug.Log("Right Pressed");
             moveInput = 1;
         }
         if(Keyboard.current.leftArrowKey.isPressed)
         {
-            Debug.Log("Left Pressed");
+            //Debug.Log("Left Pressed");
             moveInput = -1;
         }
 
         rb.linearVelocity= new Vector2(moveInput * moveSpeed,rb.linearVelocity.y);
         animator.SetFloat("Speed",MathF.Abs(moveInput));
+        // if (moveInput > 0 && !facingRight)
+        // {
+        //     Flip();
+        // }
+        // else if (moveInput < 0 && facingRight)
+        // {
+        //     Flip();
+        // }
         
-       }
+    }
+    // void Flip()
+    // {   
+    //      // Đảo trạng thái phải ↔ trái
+    //     facingRight = !facingRight;
+
+    // // Lấy kích thước hiện tại của Player
+    //     Vector3 scale = transform.localScale;
+
+    // // Đảo chiều ngang X
+    //     scale.x *= -1;
+
+    // // Gán kích thước mới lại cho Player
+    //     transform.localScale = scale;
+    // }
 } 

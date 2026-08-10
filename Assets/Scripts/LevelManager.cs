@@ -4,7 +4,8 @@
 //RespawnPlayer():Đưa Player về điểm hồi sinh.
 //Transform: vị trí
 // Vector: tọa độ
-using JetBrains.Annotations;
+using System.Collections;
+using Unity.Collections;
 using UnityEngine;
 public class LevelManager : MonoBehaviour
 {   //bien luu vi tri hoi sinh hien tai
@@ -12,6 +13,9 @@ public class LevelManager : MonoBehaviour
     //bien luu vi tri player cần hồi sinh
     public Transform player;
     public static LevelManager instance;
+    public GameObject deathParticle;
+    public GameObject respawnParticle;
+    public float waitTimeDelay;
     void Awake()
     {
         instance = this;
@@ -32,11 +36,29 @@ public class LevelManager : MonoBehaviour
     public void RespawnPlayer()
     
     {
-        player.position = respawnPoint;
-        Debug.Log("Player Respawn");
+        StartCoroutine(RespawnCorountine());
+       //Tao ban sao hieu ung chết: Nó là gì, nằm ở đâu, góc xoay
+    //    Instantiate(deathParticle,player.position,Quaternion.identity);
 
+    //    player.position = respawnPoint;
+    //    //Tao ban sao hieu ung hồi sinh: Nó là gì, nằm ở đâu, góc xoay
+    //    Instantiate(respawnParticle,respawnPoint,Quaternion.identity);
     }
-
+    
+     private IEnumerator RespawnCorountine()
+     {   
+        GameObject depthEffect = Instantiate(deathParticle,player.position,Quaternion.identity);
+        yield return new WaitForSeconds(waitTimeDelay);
+        player.gameObject.SetActive(false);
+        Destroy(depthEffect,2f);
+        player.position = respawnPoint;
+        //Tao ban sao hieu ung hồi sinh: Nó là gì, nằm ở đâu, góc xoay
+        GameObject respawnEffect = Instantiate(respawnParticle,respawnPoint,Quaternion.identity);
+        yield return new WaitForSeconds(0.5f);
+        player.gameObject.SetActive(true);
+        Destroy(respawnEffect,2f);
+         
+     }
     //Cập nhật điểm hồi sinh mới
     public void UpdateCheckPoint(Vector3 newCheckpoint)
     {
