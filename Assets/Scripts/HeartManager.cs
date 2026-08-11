@@ -33,7 +33,8 @@ public class HeartManager : MonoBehaviour
         if(currentHeart < 0 || currentHeart == 0)
         {
             gameOverPanel.SetActive(true);
-            Time.timeScale =0f;
+            Time.timeScale = 0f;
+            
         }
         UpdateDamage();
         

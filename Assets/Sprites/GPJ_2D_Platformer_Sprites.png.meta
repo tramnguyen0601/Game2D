@@ -145,7 +145,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GPJ_2D_Platformer_Sprites_1
+      name: walking_1
       rect:
         serializedVersion: 2
         x: 64
@@ -505,7 +505,7 @@ TextureImporter:
         width: 16
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -527,7 +527,7 @@ TextureImporter:
         width: 16
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -536,6 +536,50 @@ TextureImporter:
       bones: []
       spriteID: f77998b165566364fab1952398f3a1ac
       internalID: -2063338113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walking_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 112
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 235617b8cca51e448aa733d21dcc4f75
+      internalID: -43790273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walking_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 112
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e40728032baf31247a0ea3e0c8e5b5b4
+      internalID: 1469464763
       vertices: []
       indices: 
       edges: []
@@ -556,7 +600,6 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      GPJ_2D_Platformer_Sprites_1: -18997025
       GPJ_2D_Platformer_Sprites_10: 862172157
       GPJ_2D_Platformer_Sprites_11: -1857344208
       GPJ_2D_Platformer_Sprites_12: 1863387145
@@ -575,6 +618,9 @@ TextureImporter:
       Player_Walking_1: -945920304
       Player_Walking_2: -2063338113
       Sprites_6: 904296842
+      walking_1: -18997025
+      walking_2: -43790273
+      walking_3: 1469464763
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

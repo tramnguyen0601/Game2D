@@ -4,6 +4,7 @@ using UnityEngine;
 public class KillPlayer : MonoBehaviour
 {   public int penalty;
     public int damage;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
