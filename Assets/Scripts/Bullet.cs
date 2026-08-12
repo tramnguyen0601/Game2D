@@ -28,11 +28,13 @@ public class Bullet : MonoBehaviour
     {    Debug.Log("Bullet chạm: " + collision.name);
         if(collision.name == "Enemy")
         {   
-            Instantiate(deathEnemyParticle,collision.transform.position,collision.transform.rotation);
+            GameObject deathEnemyParticle2 = Instantiate(deathEnemyParticle,collision.transform.position,collision.transform.rotation);
             ScoreManager.instance.AddPoints(score);
             Destroy(collision.gameObject);
-            Instantiate(bulletParticle,transform.position,transform.rotation);
+            Destroy(deathEnemyParticle2,2f);
+            GameObject bulletParticle2 =  Instantiate(bulletParticle,transform.position,transform.rotation);
             Destroy(gameObject);
+            Destroy(bulletParticle2,2f);
         }
         if(collision.CompareTag("Ground"))
         {  Debug.Log("TRÚNG GROUND");

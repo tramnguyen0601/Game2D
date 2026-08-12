@@ -29,7 +29,6 @@ public class PlayerController:MonoBehaviour
     public LayerMask groundLayer;
     private Animator animator;
     //check trang thái quay: mặc định bên phải
-    private bool facingRight = true;
     public Transform bulletPoint;
     public GameObject bullet;
     void Start()
