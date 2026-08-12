@@ -49,7 +49,7 @@ public class PlayerController:MonoBehaviour
     void Update() 
     {    //kiem tra có dang dung dat khong
          isGrounded = Physics2D.OverlapCircle(groundCheck.position,checkgroundRadius,groundLayer);
-         Debug.Log("isGrounded"+ isGrounded);
+         //Debug.Log("isGrounded"+ isGrounded);
          animator.SetBool("Grounded",isGrounded);
          //Check neu cham dat thi reset so lan nhay
         if (isGrounded)

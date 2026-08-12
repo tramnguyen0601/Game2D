@@ -6,6 +6,7 @@
 // Vector: tọa độ
 using System.Collections;
 using Unity.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 public class LevelManager : MonoBehaviour
@@ -17,6 +18,7 @@ public class LevelManager : MonoBehaviour
     public GameObject deathParticle;
     public GameObject respawnParticle;
     public float waitTimeDelay;
+    private CameraController camera;
     void Awake()
     {
         instance = this;
@@ -48,18 +50,26 @@ public class LevelManager : MonoBehaviour
     
      private IEnumerator RespawnCorountine()
      {   
+         Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+         rb.linearVelocity = Vector2.zero;
+         rb.gravityScale = 0f;
         GameObject depthEffect = Instantiate(deathParticle,player.position,Quaternion.identity);
-        yield return new WaitForSeconds(waitTimeDelay);
+        yield return new WaitForSeconds(0.5f);
         player.gameObject.SetActive(false);
+        //camera.isFlowing = false;
         Destroy(depthEffect,2f);
         player.position = respawnPoint;
         //Tao ban sao hieu ung hồi sinh: Nó là gì, nằm ở đâu, góc xoay
         GameObject respawnEffect = Instantiate(respawnParticle,respawnPoint,Quaternion.identity);
         yield return new WaitForSeconds(0.5f);
         player.gameObject.SetActive(true);
+        //camera.isFlowing = true;
+         rb.linearVelocity = Vector2.zero;
+         rb.gravityScale = 5f;
         Destroy(respawnEffect,2f);
          
      }
+
     //Cập nhật điểm hồi sinh mới
     public void UpdateCheckPoint(Vector3 newCheckpoint)
     {
