@@ -5,7 +5,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using System.Collections;
 public class PlayerController:MonoBehaviour
 {   
     //khai bao bien luu toc do di chuyen cua player: trai phai
@@ -31,10 +31,12 @@ public class PlayerController:MonoBehaviour
     //check trang thái quay: mặc định bên phải
     public Transform bulletPoint;
     public GameObject bullet;
+    public GameObject gun;
     void Start()
     {
         rb= GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        gun.SetActive(false);
     }
     
     void FixedUpdate()
@@ -65,11 +67,20 @@ public class PlayerController:MonoBehaviour
             }
         }
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
+        {   
+            StartCoroutine(ShowGun());
             Instantiate(bullet,bulletPoint.position,bulletPoint.rotation);
         }
     }
     
+    private IEnumerator ShowGun()
+{
+    gun.SetActive(true);
+
+    yield return new WaitForSeconds(1);
+
+    gun.SetActive(false);
+}
     void Jump()
     {
         rb.linearVelocity= new Vector2(rb.linearVelocity.x,jumpHeight);

@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour
     public GameObject deathParticle;
     public GameObject respawnParticle;
     public float waitTimeDelay;
-    private CameraController mainCamera;
+    public CameraController cameraController;
     void Awake()
     {
         instance = this;
@@ -56,14 +56,14 @@ public class LevelManager : MonoBehaviour
         GameObject depthEffect = Instantiate(deathParticle,player.position,Quaternion.identity);
         yield return new WaitForSeconds(0.5f);
         player.gameObject.SetActive(false);
-        //mainCamera.isFlowing = false;
+        //cameraController.DeathCamera();
         Destroy(depthEffect,2f);
         player.position = respawnPoint;
         //Tao ban sao hieu ung hồi sinh: Nó là gì, nằm ở đâu, góc xoay
         GameObject respawnEffect = Instantiate(respawnParticle,respawnPoint,Quaternion.identity);
         yield return new WaitForSeconds(0.5f);
         player.gameObject.SetActive(true);
-        //mainCamera.isFlowing = true;
+        //cameraController.NormalCamera();
          rb.linearVelocity = Vector2.zero;
          rb.gravityScale = 5f;
         Destroy(respawnEffect,2f);

@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         isFlowing = true;
+        //yOffset = 0f;
     }
 
     // Update is called once per frame
@@ -20,5 +21,16 @@ public class CameraController : MonoBehaviour
         {
            transform.position = new Vector3 (player.transform.position.x + xOffset,player.transform.position.y+yOffset,transform.position.z);
         }
+    }
+    // Gọi khi Player chạm DeathGround
+    public void DeathCamera()
+    {
+        yOffset = 3.1f;
+    }
+
+    // Gọi khi Player hồi sinh xong
+    public void NormalCamera()
+    {
+        yOffset = 0f;
     }
 }

@@ -167,7 +167,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GPJ_2D_Platformer_Sprites_2
+      name: gun
       rect:
         serializedVersion: 2
         x: 2
@@ -387,7 +387,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GPJ_2D_Platformer_Sprites_12
+      name: frame
       rect:
         serializedVersion: 2
         x: 7
@@ -584,6 +584,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: exit
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 71
+        width: 18
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed22a779c2a488745acca8be5b3b6dff
+      internalID: -1810073810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -602,12 +624,10 @@ TextureImporter:
     nameFileIdTable:
       GPJ_2D_Platformer_Sprites_10: 862172157
       GPJ_2D_Platformer_Sprites_11: -1857344208
-      GPJ_2D_Platformer_Sprites_12: 1863387145
       GPJ_2D_Platformer_Sprites_13: -83232602
       GPJ_2D_Platformer_Sprites_14: -1176884426
       GPJ_2D_Platformer_Sprites_15: 2137299735
       GPJ_2D_Platformer_Sprites_16: 1122547393
-      GPJ_2D_Platformer_Sprites_2: -127625344
       GPJ_2D_Platformer_Sprites_5: 1564390201
       GPJ_2D_Platformer_Sprites_7: -1257818575
       GPJ_2D_Platformer_Sprites_8: -1049883046
@@ -618,6 +638,9 @@ TextureImporter:
       Sprites_6: 904296842
       bullet_1: -2114631204
       bullet_2: -461212787
+      exit: -1810073810
+      frame: 1863387145
+      gun: -127625344
       walking_1: -18997025
       walking_2: -43790273
       walking_3: 1469464763
