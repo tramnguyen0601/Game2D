@@ -189,7 +189,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GPJ_2D_Platformer_Sprites_3
+      name: bullet_1
       rect:
         serializedVersion: 2
         x: 35
@@ -211,7 +211,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GPJ_2D_Platformer_Sprites_4
+      name: bullet_2
       rect:
         serializedVersion: 2
         x: 47
@@ -608,8 +608,6 @@ TextureImporter:
       GPJ_2D_Platformer_Sprites_15: 2137299735
       GPJ_2D_Platformer_Sprites_16: 1122547393
       GPJ_2D_Platformer_Sprites_2: -127625344
-      GPJ_2D_Platformer_Sprites_3: -2114631204
-      GPJ_2D_Platformer_Sprites_4: -461212787
       GPJ_2D_Platformer_Sprites_5: 1564390201
       GPJ_2D_Platformer_Sprites_7: -1257818575
       GPJ_2D_Platformer_Sprites_8: -1049883046
@@ -618,6 +616,8 @@ TextureImporter:
       Player_Walking_1: -945920304
       Player_Walking_2: -2063338113
       Sprites_6: 904296842
+      bullet_1: -2114631204
+      bullet_2: -461212787
       walking_1: -18997025
       walking_2: -43790273
       walking_3: 1469464763

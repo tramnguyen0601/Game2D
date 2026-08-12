@@ -30,6 +30,8 @@ public class PlayerController:MonoBehaviour
     private Animator animator;
     //check trang thái quay: mặc định bên phải
     private bool facingRight = true;
+    public Transform bulletPoint;
+    public GameObject bullet;
     void Start()
     {
         rb= GetComponent<Rigidbody2D>();
@@ -63,6 +65,10 @@ public class PlayerController:MonoBehaviour
                jumpRequested = true;
             }
         }
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            Instantiate(bullet,bulletPoint.position,bulletPoint.rotation);
+        }
     }
     
     void Jump()
@@ -86,28 +92,15 @@ public class PlayerController:MonoBehaviour
 
         rb.linearVelocity= new Vector2(moveInput * moveSpeed,rb.linearVelocity.y);
         animator.SetFloat("Speed",MathF.Abs(moveInput));
-        // if (moveInput > 0 && !facingRight)
-        // {
-        //     Flip();
-        // }
-        // else if (moveInput < 0 && facingRight)
-        // {
-        //     Flip();
-        // }
+        //van toc > 0
+        if (rb.linearVelocityX > 0)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        else if (rb.linearVelocityX < 0)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
         
     }
-    // void Flip()
-    // {   
-    //      // Đảo trạng thái phải ↔ trái
-    //     facingRight = !facingRight;
-
-    // // Lấy kích thước hiện tại của Player
-    //     Vector3 scale = transform.localScale;
-
-    // // Đảo chiều ngang X
-    //     scale.x *= -1;
-
-    // // Gán kích thước mới lại cho Player
-    //     transform.localScale = scale;
-    // }
 } 

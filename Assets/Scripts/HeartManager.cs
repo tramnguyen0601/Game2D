@@ -40,7 +40,11 @@ public class HeartManager : MonoBehaviour
         
     }
     void UpdateDamage()
-    {
+    {   
+        if(currentHeart < 0)
+        {
+            currentHeart = 0;
+        }
         heartText.text = currentHeart.ToString();
     }
 }

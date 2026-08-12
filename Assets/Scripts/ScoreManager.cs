@@ -24,6 +24,7 @@ public class ScoreManager : MonoBehaviour
     public void AddPoints(int points)
     {
         score = score + points;
+         Debug.Log("point------------"+ points);
         UpdateScoreUI();
         
     }

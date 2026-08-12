@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour
     {   
         if(isFlowing)
         {
-           transform.position = new Vector3 (player.transform.position.x + xOffset,player.transform.position.y + yOffset,transform.position.z);
+           transform.position = new Vector3 (player.transform.position.x + xOffset,player.transform.position.y+yOffset,transform.position.z);
         }
     }
 }
