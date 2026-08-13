@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 public class EndMap : MonoBehaviour
 {   
+    public bool playInZone;
     public GameObject updateLevelText;
-    public GameObject gameOver;
+    public string nextLoadLevel;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,25 +16,26 @@ public class EndMap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Keyboard.current.enterKey.wasPressedThisFrame && playInZone)
+        {
+            SceneManager.LoadScene(nextLoadLevel);
+        }
     }
      void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.name == "Player")
         {
-            StartCoroutine(ShowUpdateLevel(collision));
+            playInZone = true;
+            //StartCoroutine(ShowUpdateLevel(collision));
         }
     }
-    private IEnumerator ShowUpdateLevel(Collider2D collider2D)
-    {
-        Rigidbody2D rb = collider2D.GetComponent<Rigidbody2D>();
-        rb.linearVelocity = Vector2.zero;
-        rb.gravityScale = 0f;
-        updateLevelText.SetActive(true);
-        yield return new WaitForSeconds (2f);
-        updateLevelText.SetActive(false);
-        SceneManager.LoadScene("MainMenu");
-        Time.timeScale= 0f;
 
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.name == "Player")
+        {
+            playInZone = false;
+            //StartCoroutine(ShowUpdateLevel(collision));
+        }
     }
 }
