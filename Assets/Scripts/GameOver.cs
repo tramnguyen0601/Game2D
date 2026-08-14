@@ -18,7 +18,7 @@ public class GameOver : MonoBehaviour
     public void PlayAgainGame()
     {   
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Level_1");
+        SceneManager.LoadScene("LevelSelect");
     }
     public void QuitMainMenu()
     {

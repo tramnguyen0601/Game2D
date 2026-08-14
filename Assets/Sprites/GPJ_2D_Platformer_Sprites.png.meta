@@ -321,7 +321,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GPJ_2D_Platformer_Sprites_9
+      name: ladder
       rect:
         serializedVersion: 2
         x: 65
@@ -615,7 +615,7 @@ TextureImporter:
         width: 21
         height: 29
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -653,7 +653,6 @@ TextureImporter:
       GPJ_2D_Platformer_Sprites_5: 1564390201
       GPJ_2D_Platformer_Sprites_7: -1257818575
       GPJ_2D_Platformer_Sprites_8: -1049883046
-      GPJ_2D_Platformer_Sprites_9: -1299256439
       Player: -610399772
       Player_Walking_1: -945920304
       Player_Walking_2: -2063338113
@@ -663,6 +662,7 @@ TextureImporter:
       exit: -1810073810
       frame: 1863387145
       gun: -127625344
+      ladder: -1299256439
       nextlevel: 426345488
       walking_1: -18997025
       walking_2: -43790273
