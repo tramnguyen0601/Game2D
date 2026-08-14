@@ -1,13 +1,16 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HeartManager : MonoBehaviour
 {
-    public int maxDamge;
+    public int maxDamge;//mang song
     private int currentHeart;
     public GameObject gameOverPanel;
     public static HeartManager instance;
     public Text heartText;
+    private int currentLife;
+    public int maxLive = 300;//heart
     void Awake()
     {
         instance = this;
@@ -47,4 +50,16 @@ public class HeartManager : MonoBehaviour
         }
         heartText.text = currentHeart.ToString();
     }
+
+    // //note de doi life = heart
+    // public void AddLivePlayer()
+    // {
+    //     currentLife = 0;
+    //     currentLife = currentLife + dameLife;
+    //     if(currentLife == maxDamge)
+    //     {
+            
+    //     }
+        
+    // }
 }

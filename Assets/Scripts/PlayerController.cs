@@ -59,7 +59,7 @@ public class PlayerController:MonoBehaviour
         {
             jumpCount = 0;
         }
-        if(Keyboard.current.upArrowKey.wasPressedThisFrame) //xử lý ở đây để không bị 
+        if(Keyboard.current.upArrowKey.wasPressedThisFrame) //xử lý ở đây để không bị miss
         {   
             if(jumpCount < maxJump)
             {
@@ -68,6 +68,7 @@ public class PlayerController:MonoBehaviour
         }
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {   
+            Debug.Log("SPACE ĐƯỢC NHẤN");
             StartCoroutine(ShowGun());
             Instantiate(bullet,bulletPoint.position,bulletPoint.rotation);
         }
@@ -75,11 +76,11 @@ public class PlayerController:MonoBehaviour
     
     private IEnumerator ShowGun()
 {
-    gun.SetActive(true);
+        gun.SetActive(true);
 
-    yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f);
 
-    gun.SetActive(false);
+        gun.SetActive(false);
 }
     void Jump()
     {

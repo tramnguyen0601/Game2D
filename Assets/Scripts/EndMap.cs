@@ -26,7 +26,6 @@ public class EndMap : MonoBehaviour
         if(collision.name == "Player")
         {
             playInZone = true;
-            //StartCoroutine(ShowUpdateLevel(collision));
         }
     }
 
@@ -35,7 +34,6 @@ public class EndMap : MonoBehaviour
         if(collision.name == "Player")
         {
             playInZone = false;
-            //StartCoroutine(ShowUpdateLevel(collision));
         }
     }
 }
