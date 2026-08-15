@@ -5,12 +5,12 @@ using UnityEngine.InputSystem;
 public class EndMap : MonoBehaviour
 {   
     public bool playInZone;
-    public GameObject updateLevelText;
+    //public GameObject updateLevelText;
     public string nextLoadLevel;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        updateLevelText.SetActive(false);
+        //updateLevelText.SetActive(false);
     }
 
     // Update is called once per frame

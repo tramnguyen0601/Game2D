@@ -32,6 +32,11 @@ public class PlayerController:MonoBehaviour
     public Transform bulletPoint;
     public GameObject bullet;
     public GameObject gun;
+    public float moveInput = 0f;
+    public bool isMoving;
+    public AudioClip jumpSound; //tạo biến lưu âm thanh nhảy
+
+
     void Start()
     {
         rb= GetComponent<Rigidbody2D>();
@@ -40,7 +45,7 @@ public class PlayerController:MonoBehaviour
     }
     
     void FixedUpdate()
-    {    
+    {   
         Move();
         
         if(jumpRequested)
@@ -61,19 +66,25 @@ public class PlayerController:MonoBehaviour
         }
         if(Keyboard.current.upArrowKey.wasPressedThisFrame) //xử lý ở đây để không bị miss
         {   
-            if(jumpCount < maxJump)
-            {
-               jumpRequested = true;
-            }
+            RequestJump();
+            // if(jumpCount < maxJump)
+            // {
+            //    jumpRequested = true;
+            // }
         }
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {   
-            Debug.Log("SPACE ĐƯỢC NHẤN");
-            StartCoroutine(ShowGun());
-            Instantiate(bullet,bulletPoint.position,bulletPoint.rotation);
+            Shoot();
+            //StartCoroutine(ShowGun());
+            //Instantiate(bullet,bulletPoint.position,bulletPoint.rotation);
         }
     }
     
+    public void Shoot()
+    {
+            StartCoroutine(ShowGun());
+            Instantiate(bullet,bulletPoint.position,bulletPoint.rotation);
+    }
     private IEnumerator ShowGun()
 {
         gun.SetActive(true);
@@ -82,25 +93,49 @@ public class PlayerController:MonoBehaviour
 
         gun.SetActive(false);
 }
-    void Jump()
+    public void RequestJump()
+    {
+        if(jumpCount < maxJump)
+            {
+               jumpRequested = true;
+            }
+    }
+    public void Jump()
     {
         rb.linearVelocity= new Vector2(rb.linearVelocity.x,jumpHeight);
+        AudioSource.PlayClipAtPoint(jumpSound,transform.position);
         jumpCount ++;
     }
-    void Move()
+    public void Move()
     {
-       float moveInput = 0;
-        if(Keyboard.current.rightArrowKey.isPressed)
+    //    float moveInput = 0;
+    //     if(Keyboard.current.rightArrowKey.isPressed)
+    //     {
+    //         //Debug.Log("Right Pressed");
+    //         moveInput = 1;
+    //     }
+    //     if(Keyboard.current.leftArrowKey.isPressed)
+    //     {
+    //         //Debug.Log("Left Pressed");
+    //         moveInput = -1;
+    //     }
+         if(Keyboard.current.rightArrowKey.isPressed)
         {
             //Debug.Log("Right Pressed");
             moveInput = 1;
         }
-        if(Keyboard.current.leftArrowKey.isPressed)
+        else if(Keyboard.current.leftArrowKey.isPressed)
         {
             //Debug.Log("Left Pressed");
             moveInput = -1;
         }
-
+        else
+        {  
+            if (!isMoving)
+            {
+                moveInput = 0;
+            }
+        }
         rb.linearVelocity= new Vector2(moveInput * moveSpeed,rb.linearVelocity.y);
         animator.SetFloat("Speed",MathF.Abs(moveInput));
         //van toc > 0
@@ -114,4 +149,24 @@ public class PlayerController:MonoBehaviour
         }
         
     }
+    public void MoveLeft()
+    {
+        isMoving = true;
+        moveInput = -1;
+        Debug.Log("MoveInput: " + moveInput + " | isMoving: " + isMoving);
+    }
+    public void MoveRight()
+    {
+        isMoving = true;
+        moveInput = 1;
+        Debug.Log("MoveInput: " + moveInput + " | isMoving: " + isMoving);
+    }
+    public void StopMove()
+    {
+        isMoving = false;
+        moveInput = 0;
+        rb.linearVelocity = new Vector2(0f,rb.linearVelocity.y);
+        Debug.Log("MoveInput: " + moveInput + " | isMoving: " + isMoving);
+    }
+
 } 

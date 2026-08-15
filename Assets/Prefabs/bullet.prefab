@@ -111,6 +111,7 @@ MonoBehaviour:
   deathEnemyParticle: {fileID: 7811564037975577830, guid: 25e261ed5cf13a84cb8169c83a374fed, type: 3}
   bulletParticle: {fileID: 7471177859084279777, guid: 8deeeeb1a43b24d4fb661ccdd281d3a9, type: 3}
   player: {fileID: 0}
+  bulletSound: {fileID: 8300000, guid: 6fdf0eac39dfac94d84bf7fb8061c218, type: 3}
 --- !u!50 &6112736594531144146
 Rigidbody2D:
   serializedVersion: 5

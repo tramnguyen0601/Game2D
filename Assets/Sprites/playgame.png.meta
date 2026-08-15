@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -82,27 +82,27 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 12
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 0
+    overridden: 1
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Android
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 50
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 0
+    overridden: 1
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
@@ -214,10 +214,10 @@ TextureImporter:
       name: playgame_4
       rect:
         serializedVersion: 2
-        x: 269
-        y: 38
-        width: 211
-        height: 122
+        x: 291
+        y: 40
+        width: 126
+        height: 90
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,6 +228,138 @@ TextureImporter:
       bones: []
       spriteID: 1d500a3c746643144b11e47e26337a23
       internalID: -1474637172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: playgame_5
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 228
+        width: 91
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76d144289fa198c44840c5b6a71299b2
+      internalID: 1436855612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: playgame_6
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 266
+        width: 99
+        height: 81
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86157125a4aa93949baa275425107bfd
+      internalID: 1851180181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: playgame_7
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 172
+        width: 81
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89148166a04f7514e9d1ee43775eb28b
+      internalID: -1981445133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: playgame_8
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 167
+        width: 102
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a01c403c365fcd244bc88481b8a0c499
+      internalID: -151328370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: playgame_9
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 237
+        width: 109
+        height: 105
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a4b9595d5e861940bb5d967c4fcabca
+      internalID: -1603560039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: playgame_10
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 240
+        width: 101
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fb3d750effe72744ad7f76e33a5e62e
+      internalID: -690819832
       vertices: []
       indices: 
       edges: []
@@ -248,9 +380,15 @@ TextureImporter:
     nameFileIdTable:
       playgame_0: -1994191978
       playgame_1: -1268326388
+      playgame_10: -690819832
       playgame_2: -1232340757
       playgame_3: -1596239304
       playgame_4: -1474637172
+      playgame_5: 1436855612
+      playgame_6: 1851180181
+      playgame_7: -1981445133
+      playgame_8: -151328370
+      playgame_9: -1603560039
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

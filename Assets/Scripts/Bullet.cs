@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     public GameObject deathEnemyParticle;
     public GameObject bulletParticle;
     public PlayerController player;
+    public AudioClip bulletSound;
     void Start()
     {   
         player = FindAnyObjectByType<PlayerController>();
@@ -28,6 +29,7 @@ public class Bullet : MonoBehaviour
         {   
             GameObject deathEnemyParticle2 = Instantiate(deathEnemyParticle,collision.transform.position,collision.transform.rotation);
             ScoreManager.instance.AddPoints(score);
+            AudioSource.PlayClipAtPoint(bulletSound,transform.position);
             Destroy(collision.gameObject);
             Destroy(deathEnemyParticle2,2f);
             GameObject bulletParticle2 =  Instantiate(bulletParticle,transform.position,transform.rotation);

@@ -146,6 +146,7 @@ MonoBehaviour:
   moveSpeed: 2
   moveHeight: 0.2
   newCoinPosition: {x: 0, y: 0, z: 0}
+  coinSound: {fileID: 8300000, guid: f456e01a70be95f48bc5eb9e0ed85aa6, type: 3}
 --- !u!95 &1145008493304763890
 Animator:
   serializedVersion: 7

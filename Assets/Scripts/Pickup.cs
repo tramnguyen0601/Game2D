@@ -9,6 +9,7 @@ public class Pickup : MonoBehaviour
     private Animator animator;
     private int randomState;
     private float randomOffset;
+    public AudioClip coinSound;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {  
@@ -53,17 +54,14 @@ public class Pickup : MonoBehaviour
             Mathf.Sin(Time.time * moveSpeed + randomOffset)
             * moveHeight;
 
-        transform.position = new Vector3(
-            newCoinPosition.x,
-            newY,
-            newCoinPosition.z
-        );
+        transform.position = new Vector3(newCoinPosition.x,newY,newCoinPosition.z);
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Player")
         {
             ScoreManager.instance.AddPoints(score);
+            AudioSource.PlayClipAtPoint(coinSound,transform.position); //phát âm thanh coin khi player va chạm
             Destroy(gameObject);// huy coin
         }
     }
