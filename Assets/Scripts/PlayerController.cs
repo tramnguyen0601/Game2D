@@ -153,20 +153,17 @@ public class PlayerController:MonoBehaviour
     {
         isMoving = true;
         moveInput = -1;
-        Debug.Log("MoveInput: " + moveInput + " | isMoving: " + isMoving);
     }
     public void MoveRight()
     {
         isMoving = true;
         moveInput = 1;
-        Debug.Log("MoveInput: " + moveInput + " | isMoving: " + isMoving);
     }
     public void StopMove()
     {
         isMoving = false;
         moveInput = 0;
         rb.linearVelocity = new Vector2(0f,rb.linearVelocity.y);
-        Debug.Log("MoveInput: " + moveInput + " | isMoving: " + isMoving);
     }
 
 } 

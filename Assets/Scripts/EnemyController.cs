@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -13,9 +15,17 @@ public class EnemyController : MonoBehaviour
     public bool notGrounded;
     public Transform notgroundCheck; //có position, rotation, size
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    //check vùng phát hiện Player
+    public GameObject bulletEnemy; // tạo bản sao bullet
+    public Transform firePoint;
+    public GameObject gunEnemy;
+    public bool playerInRange = false;// kiểm tra xem player có đagn ở trong phạm vi của Enemy không?
+    private float nextTime;
+     public float waitingTime = 2f;
     void Start()
     {
+        gunEnemy.SetActive(false); //ẩn cây súng
+
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -29,6 +39,18 @@ public class EnemyController : MonoBehaviour
             moveRight = !moveRight;
         }
         Move();
+
+        if(playerInRange && Time.time >= nextTime) //nếu kiểm tra player đã nằm vùng và enemy đủ time để bắn đạn thì:
+        {
+            Debug.Log("ĐỦ ĐIỀU KIỆN VÀO =");
+            Debug.Log("BẮN LÚC: " + Time.time);
+            StartCoroutine(ShowGunEnemy());
+            Shoot(); // hàm tạo đạn enemy
+            nextTime = Time.time + waitingTime; //thời gian đơi để bắn viên đạn tiêp theo
+            Debug.Log("BẮN tiếp theo: " + nextTime);
+        }
+        
+
     }
     void Move()
     {
@@ -41,4 +63,16 @@ public class EnemyController : MonoBehaviour
             rb.linearVelocity= new Vector2(-moveSpeed,rb.linearVelocity.y);
         }
     }
+    private IEnumerator ShowGunEnemy()
+    {
+        gunEnemy.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        gunEnemy.SetActive(false);
+    }
+    void Shoot()
+    {   
+        Debug.Log("BẮN =");
+        Instantiate(bulletEnemy,firePoint.position,firePoint.rotation);
+    }
+    
 }
