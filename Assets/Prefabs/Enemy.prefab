@@ -509,7 +509,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6667042686255874086}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -551,3 +551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DetectionZoneEnemy
   enemyController: {fileID: 6456432883566953061}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  radius: 5

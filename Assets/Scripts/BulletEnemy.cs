@@ -3,7 +3,7 @@ using UnityEngine;
 public class BulletEnemy : MonoBehaviour
 {
     public float bulletEnemySpeed = 1f;
-    //public int penalty = 1;
+    public int damage = 1;
     private PlayerController playerController;
     private Rigidbody2D rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -38,7 +38,7 @@ public class BulletEnemy : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            //HeartManager.instance.TakeDamge(penalty);
+            HeartManager.instance.TakeDamge(damage);
             Destroy(gameObject);
             return;
         }
