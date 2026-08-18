@@ -17,20 +17,16 @@ public class DetectionZoneEnemy : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     
     {
-        //Debug.Log("Có object vào vùng: " + collision.name);
         if(collision.CompareTag("Player"))
         {
             enemyController.playerInRange = true;// player vào vùng
-            Debug.Log("VÀO VÙNG → playerInRange = TRUE");
         }
     }
     void OnTriggerExit2D(Collider2D collision)
     {
-       // Debug.Log("Có object vào vùng: " + collision.name);
         if(collision.CompareTag("Player"))
         {
             enemyController.playerInRange = false;//player ra ngoài vùng
-            Debug.Log("RA VÙNG → playerInRange = FALSE");
         }
     }
 }
