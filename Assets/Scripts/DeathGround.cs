@@ -12,7 +12,12 @@ public class DeathGround : MonoBehaviour
         {   
             //cameraController.DeathCamera();
             LevelManager.instance.RespawnPlayer();
-            HeartManager.instance.TakeDamge(damage);
+            HeartManager.instance.TakeDamage(damage);
+            IDamage taget = collision.GetComponent<IDamage>();
+            if (taget!= null)
+            {
+                taget.TakeDamage(damage);
+            }
             ScoreManager.instance.AddPoints(-penalty);
         }
     }

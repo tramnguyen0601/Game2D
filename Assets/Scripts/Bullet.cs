@@ -2,33 +2,44 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Rigidbody2D rd;
-    public float bulletSpeed;
-    public int score;
-    public GameObject deathEnemyParticle;
-    public GameObject bulletParticle;
-    public PlayerController player;
-    public AudioClip bulletSound;
-    void Start()
-    {   
+    [SerializeField]private float bulletSpeed;             //biến lưu tốc độ di chuyển bullet của player;
+    [SerializeField]private int damage = 1;                //biến lưu damage khi đạn va chạm object;
+    [SerializeField]private GameObject deathEnemyParticle; //biến lưu particle khi va chạm chết;
+    [SerializeField]private GameObject bulletParticle;     //biến lưu particle khi bullet va chạm object;
+    [SerializeField]private PlayerController player;       //biến lưu tham chiếu đến 1 object của PlayerController;
+    [SerializeField]private AudioClip bulletSound;         //biến lưu clip âm thanh
+    private void Awake()
+    {
         player = FindAnyObjectByType<PlayerController>();
         rd = GetComponent<Rigidbody2D>();
+    }
+    private void Start()
+    {   
         if(player.transform.localScale.x < 0)
         {
             bulletSpeed = -bulletSpeed;
         }
     }
-    void Update()
+    private void Update()
+    {
+        MovementBullet(); // hàm di chuyển đạn của Player;
+    }
+    private void MovementBullet()
     {
         rd.linearVelocity = new Vector2 (bulletSpeed, rd.linearVelocity.y);
         Destroy(gameObject,3f);
-        
     }
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {    Debug.Log("Bullet chạm: " + collision.name);
         if(collision.name == "Enemy")
         {   
             GameObject deathEnemyParticle2 = Instantiate(deathEnemyParticle,collision.transform.position,collision.transform.rotation);
-            ScoreManager.instance.AddPoints(score);
+            //ScoreManager.instance.AddPoints(score);
+            IDamage tagetEnemy = collision.GetComponent<IDamage>();
+            if (tagetEnemy != null)
+            {
+                tagetEnemy.TakeDamage(damage);
+            }
             AudioSource.PlayClipAtPoint(bulletSound,transform.position);
             Destroy(collision.gameObject);
             Destroy(deathEnemyParticle2,2f);
@@ -41,8 +52,5 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        
-        
-        
     }
 }

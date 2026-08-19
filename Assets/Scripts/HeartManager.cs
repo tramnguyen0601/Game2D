@@ -29,7 +29,7 @@ public class HeartManager : MonoBehaviour
         
     }
 
-    public void TakeDamge(int damage)
+    public void TakeDamage(int damage)
     {
         Debug.Log("voo");
         currentHeart = currentHeart - damage;

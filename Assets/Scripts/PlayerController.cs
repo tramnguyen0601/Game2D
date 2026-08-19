@@ -6,14 +6,13 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
-public class PlayerController:MonoBehaviour
+public class PlayerController:MonoBehaviour,IDamage
 {   
-    //khai bao bien luu toc do di chuyen cua player: trai phai
-    public float moveSpeed;
-    //khai bao bien luu toc do nhay cua player
-    public float jumpHeight;
-    //vat ly
-    private Rigidbody2D rb;
+    [SerializeField]
+    private float moveSpeed; //khai báo biến lưu tốc độ di chuyển của Player
+    [SerializeField]
+    private float jumpHeight;//Khai báo biến lưu tốc nhảy của Player
+    private Rigidbody2D rb;  //biến 
     //check 
     private bool jumpRequested;
     //check ground
@@ -164,6 +163,10 @@ public class PlayerController:MonoBehaviour
         isMoving = false;
         moveInput = 0;
         rb.linearVelocity = new Vector2(0f,rb.linearVelocity.y);
+    }
+    public void TakeDamage(int damage)
+    {
+        HeartManager.instance.TakeDamage(damage);
     }
 
 } 

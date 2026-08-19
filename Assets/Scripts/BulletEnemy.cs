@@ -1,22 +1,21 @@
 using UnityEngine;
-
 public class BulletEnemy : MonoBehaviour
 {
-    public float bulletEnemySpeed = 1f;
-    public int damage = 1;
-    private PlayerController playerController;
+    [SerializeField]private float bulletEnemySpeed = 1f; //biến lưu tốc bộ bắn của đạn
+    [SerializeField]private int damage = 1;              //biến lưu số live bị trừ khi va chạm Player
+    //private PlayerController playerController;         // biến lưu tham chiếu đến 1 object của PlayerController
     private Rigidbody2D rb;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        //playerController = FindAnyObjectByType<PlayerController>();
     }
-    void Start()
+    private void Start()
     {
-        playerController = FindAnyObjectByType<PlayerController>();
+        //-----ENEMY CÓ THỂ BẮN NHIỀU HƯỚNG, THẲNG/CHÉO TÙY VÀO VỊ TRÍ CỦA PLAYER-----//
         //rb = GetComponent<Rigidbody2D>();
         // if(playerController != null)
-        // {  //enemy bắn nhiều hướng: tùy vị trí đứng của player khi vào vùng.
+        // {  
         //    Vector2 direction = (playerController.transform.position - transform.position).normalized;
         //    //Debug.Log("Direction = " + direction);
         //    rb.linearVelocity = direction * bulletEnemySpeed;
@@ -29,23 +28,24 @@ public class BulletEnemy : MonoBehaviour
         rb.linearVelocity = new Vector2(direction * bulletEnemySpeed,0f);
         Destroy(gameObject,5f);
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.CompareTag("Player"))
+   private void OnTriggerEnter2D(Collider2D collision)
+   {
+        //if(collision.CompareTag("Player"))
+        //{
+            //HeartManager.instance.TakeDamage(damage);
+        IDamage taget = collision.GetComponent<IDamage>();
+        if(taget != null)
         {
-            HeartManager.instance.TakeDamge(damage);
+            taget.TakeDamage(damage);
             Destroy(gameObject);
             return;
         }
+        //}
         if (collision.CompareTag("Ground"))
         {
             Destroy(gameObject);
             return;
         }
-    }
+   }
 }
+
