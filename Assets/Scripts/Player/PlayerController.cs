@@ -6,7 +6,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
-public class PlayerController:MonoBehaviour,IDamage
+public class PlayerController:MonoBehaviour,IDamage,ILife
 {   
     [SerializeField]
     private float moveSpeed; //khai báo biến lưu tốc độ di chuyển của Player
@@ -168,5 +168,8 @@ public class PlayerController:MonoBehaviour,IDamage
     {
         HeartManager.instance.TakeDamage(damage);
     }
-
+    public void LoseLife(int life)
+    {
+        LifeManager.instance.LoseLife(-life);
+    }
 } 

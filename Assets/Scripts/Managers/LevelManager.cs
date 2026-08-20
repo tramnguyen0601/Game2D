@@ -5,10 +5,7 @@
 //Transform: vị trí
 // Vector: tọa độ
 using System.Collections;
-using Unity.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 public class LevelManager : MonoBehaviour
 {   //bien luu vi tri hoi sinh hien tai
     private Vector3 respawnPoint;
