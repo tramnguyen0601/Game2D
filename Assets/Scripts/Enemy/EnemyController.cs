@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour,IDamage
+public class EnemyController : MonoBehaviour
 {   
     //----- CÁC BIẾN LƯU XỬ LÝ DI CHUYỂN CỦA ENEMY -----//
     [SerializeField] private float moveSpeed;          //biến lưu tốc độ di chuyển của Enemy;
@@ -107,8 +107,8 @@ public class EnemyController : MonoBehaviour,IDamage
     {
         playerInRange = value;
     }
-    public void TakeDamage(int damage)
-    {
-        HeartManager.instance.TakeDamage(-damage);
-    }
+    // public void TakeDamage(int damage)
+    // {
+    //     HeartEnemyManager.instance.TakeDamage(damage);
+    // }
 }

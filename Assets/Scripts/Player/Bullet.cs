@@ -30,25 +30,26 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject,3f);
     }
     private void OnTriggerEnter2D(Collider2D collision)
-    {    Debug.Log("Bullet chạm: " + collision.name);
-        if(collision.name == "Enemy")
+    {    //Debug.Log("Bullet chạm: " + collision.name);
+        //if(collision.name == "Enemy")
+        //{   
+        IDamage tagetEnemy = collision.GetComponentInParent<IDamage>(); //dùng interface
+        if(tagetEnemy != null)
         {   
             GameObject deathEnemyParticle2 = Instantiate(deathEnemyParticle,collision.transform.position,collision.transform.rotation);
-            //ScoreManager.instance.AddPoints(score);
-            IDamage tagetEnemy = collision.GetComponent<IDamage>();
-            if (tagetEnemy != null)
-            {
-                tagetEnemy.TakeDamage(damage);
-            }
+            tagetEnemy.TakeDamage(damage);
             AudioSource.PlayClipAtPoint(bulletSound,transform.position);
-            Destroy(collision.gameObject);
-            Destroy(deathEnemyParticle2,2f);
-            GameObject bulletParticle2 =  Instantiate(bulletParticle,transform.position,transform.rotation);
-            Destroy(gameObject);
-            Destroy(bulletParticle2,2f);
+            //Destroy(collision.gameObject);
+             Destroy(deathEnemyParticle2,2f);
+            //GameObject bulletParticle2 =  Instantiate(bulletParticle,transform.position,transform.rotation);
+            //Destroy(gameObject);
+            //Destroy(bulletParticle2,2f);
+            return;
         }
+        //}
         if(collision.CompareTag("Ground"))
         {  Debug.Log("TRÚNG GROUND");
+            GameObject bulletParticle2 =  Instantiate(bulletParticle,transform.position,transform.rotation);
             Destroy(gameObject);
             return;
         }

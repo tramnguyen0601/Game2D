@@ -5,37 +5,35 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
     private int score;
-    public Text scoreText;
-    void Awake()
+    public int Score =>score;
+    [SerializeField]private Text scoreText;
+    private void Awake()
     {
         instance = this;
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         UpdateScoreUI();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
     }
     public void AddPoints(int points)
     {
         score = score + points;
-         Debug.Log("point------------"+ points);
+        //Debug.Log("point------------"+ points);
         UpdateScoreUI();
         
     }
-    void UpdateScoreUI()
+    private void AddHeart()
+    {
+        
+    }
+    private void UpdateScoreUI()
     {
         if(score < 0)
         {
             score = 0;
         }
         scoreText.text = score.ToString();
-        Debug.Log("score------------"+ score);
+        //Debug.Log("score------------"+ score);
     }
     
 }

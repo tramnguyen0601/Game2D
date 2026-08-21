@@ -1,19 +1,23 @@
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class Pickup : MonoBehaviour
 {   
-    public int score;
-    public float moveSpeed;
-    public float moveHeight;
-    public Vector3 newCoinPosition;
+    [SerializeField]private int score; //biến lưu điểm được cộng khi va chạm coin;
+    [SerializeField]private float moveSpeed;            //biến lưu tốc độ di chuyển của coin;
+    [SerializeField]private float moveHeight;          //biến lưu tốc độ nhún của coin;
+    [SerializeField]private Vector3 newCoinPosition;
     private Animator animator;
     private int randomState;
     private float randomOffset;
-    public AudioClip coinSound;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {  
+    [SerializeField]private AudioClip coinSound;
+    private void Awake()
+    {
         animator = GetComponent<Animator>();
+    }
+    private void Start()
+    {  
+        
         //randomState = Random.Range(0,2);
         randomOffset = Random.Range(0f, 6.28f);
         // if(randomState == 0)
@@ -26,29 +30,11 @@ public class Pickup : MonoBehaviour
         // }
         newCoinPosition = transform.position;
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
          Bounce();
-        // if(randomState == 1)
-        // {
-        //     Bounce();
-        // }
     }
-    // void Bounce()
-    
-    // {
-    //     float newY = newCoinPosition.y
-    //                + Mathf.Sin(Time.time * moveSpeed) * moveHeight;
-
-    //     transform.position = new Vector3(
-    //         newCoinPosition.x,
-    //         newY,
-    //         newCoinPosition.z
-    //     );
-    // }
-    void Bounce()
+    private void Bounce()
     {
         float newY = newCoinPosition.y +
             Mathf.Sin(Time.time * moveSpeed + randomOffset)
@@ -56,13 +42,13 @@ public class Pickup : MonoBehaviour
 
         transform.position = new Vector3(newCoinPosition.x,newY,newCoinPosition.z);
     }
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Player")
         {
             ScoreManager.instance.AddPoints(score);
             AudioSource.PlayClipAtPoint(coinSound,transform.position); //phát âm thanh coin khi player va chạm
-            Destroy(gameObject);// huy coin
+            Destroy(gameObject);//Hủy coin trên scene;
         }
     }
         

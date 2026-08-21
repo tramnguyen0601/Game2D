@@ -168,8 +168,8 @@ public class PlayerController:MonoBehaviour,IDamage,ILife
     {
         HeartManager.instance.TakeDamage(damage);
     }
-    public void LoseLife(int life)
+    public void AddLife(int life)
     {
-        LifeManager.instance.LoseLife(-life);
+        LifeManager.instance.AddLife(life);
     }
 } 

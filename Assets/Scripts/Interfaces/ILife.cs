@@ -1,4 +1,4 @@
 public interface ILife
 {
-    void LoseLife(int life);
+    void AddLife(int life);
 }

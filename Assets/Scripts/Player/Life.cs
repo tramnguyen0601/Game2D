@@ -8,10 +8,11 @@ public class Life : MonoBehaviour
         Debug.Log("vô");
         if (collision.CompareTag("Player"))
         {
-            ILife taget = GetComponent<ILife>();
+            ILife taget = collision.GetComponent<ILife>();
             if (taget != null)
             {
-                taget.LoseLife(numLife);
+                taget.AddLife(numLife);
+                Debug.Log("numLife" + numLife);
             }
             Destroy(gameObject);
         }

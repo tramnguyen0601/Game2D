@@ -23,10 +23,19 @@ public class LifeManager : MonoBehaviour
         currentLife = maxLife;
         UpdateLifeText();
     }
-    public void LoseLife(int life)
+    public void LoseLife(int life)//Hàm mất mạng
     {
         //currentLife --; //giảm 1 mạng;
-        currentLife = maxLife - life;
+        currentLife = currentLife - life;
+        UpdateLifeText();
+    }
+    public void AddLife(int life)//Hàm thêm mạng
+    {
+        currentLife = currentLife + life;
+        if(currentLife >= 10)
+        {
+            currentLife = 10;
+        }
         UpdateLifeText();
     }
     private void UpdateLifeText()

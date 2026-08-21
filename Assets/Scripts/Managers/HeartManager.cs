@@ -2,12 +2,12 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HeartManager : MonoBehaviour
+public class HeartManager : MonoBehaviour,IDamage
 {
-    [SerializeField]private int maxDamge = 5;//biến lưu số lương tối đa máu/1 mạng;
+    [SerializeField]private int maxDamge = 5;                //biến lưu số lương tối đa máu/1 mạng;
     public int MaxDamageBar => maxDamge;
-    private int currentHeart;            //biến lưu máu hiện tại;
-    public int CurrentHeart => currentHeart; //property;
+    private int currentHeart;                               //biến lưu máu hiện tại;
+    public int CurrentHeart => currentHeart;               //property;
     // public int CurrentHeart
     // {
     //     get
@@ -15,30 +15,52 @@ public class HeartManager : MonoBehaviour
     //         return currentHeart;
     //     }
     // }
-    public GameObject gameOverPanel;     //biến lưu UI GameOver;
+    [SerializeField]private GameObject gameOverPanel;     //biến lưu UI GameOver;
     public static HeartManager instance; 
-    public Text heartText;              //biến lưu text hiển thị máu;
+    [SerializeField]private Text heartText;              //biến lưu text hiển thị máu;
+    [SerializeField]private int lastScore = 0;           //biến lưu lại các mốc điểm dùng để + 1HP;
+    [SerializeField]private int maxscoreHP = 300;        //biến lưu tổng điểm có thể được +1HP;
+    [SerializeField]private int maxHeartHP = 10;         //biến lưu max máu không được cộng nữa;
+
     void Awake()
     {
         instance = this;
         currentHeart = maxDamge;
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         gameOverPanel.SetActive(false);
         UpdateDamage();
         
+        
+    }
+    private void Update()
+    {
+        AddHeart();
     }
     public void TakeDamage(int damage)
     {
         Debug.Log("voo");
         currentHeart = currentHeart - damage;
-        if(currentHeart < 0 || currentHeart == 0)
+        if(currentHeart <=0)
         {
             LoseLife();
             // gameOverPanel.SetActive(true);
             //    // Time.timeScale = 0f;  
+        }
+        UpdateDamage();
+    }
+    private void AddHeart()//Hàm add +1HP khi đủ Score = 300
+    {
+        int score = ScoreManager.instance.Score;
+        if(score >= lastScore + maxscoreHP)
+        {
+            currentHeart = currentHeart + 1;
+            lastScore = lastScore + maxscoreHP;
+            if(currentHeart >= maxHeartHP)
+            {
+                currentHeart = maxHeartHP;
+            }
         }
         UpdateDamage();
     }
