@@ -1,12 +1,13 @@
 using UnityEngine;
 public class EnemyCavas : MonoBehaviour
 {
-    private Vector3 originalScale;                           //biến lưu kích thước ban đầu;
-    private GameObject enemy;                               //biến lưu đối tượng enemy;
+    private Vector3 originalScale;                               //biến lưu kích thước ban đầu;
+    private EnemyController enemy;                              //biến lưu đối tượng enemy;
     private void Awake()
     {
-        originalScale = transform.localScale;              //originalScale = (1, 1, 1);
-        enemy = transform.parent.gameObject;               //biến lưu transform cha Enemy;
+        originalScale = transform.localScale;                  //originalScale = (1, 1, 1);
+        enemy = GetComponentInParent<EnemyController>();         
+        // enemy = transform.parent.gameObject;               //biến lưu transform cha Enemy;
         //enemy = GameObject.FindGameObjectWithTag("Enemy");//không dùng được kiểu này vì chỉ tìm dc 1 Enemy -> gây lỗi
     }
     //Hàm chạy sau Update(),chờ Update xử lý xong hết mới đến LateUpdate()
