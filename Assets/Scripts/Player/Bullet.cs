@@ -36,21 +36,22 @@ public class Bullet : MonoBehaviour
         IDamage tagetEnemy = collision.GetComponentInParent<IDamage>(); //dùng interface
             if(tagetEnemy != null)
             {   
-            //GameObject deathEnemyParticle2 = Instantiate(deathEnemyParticle,collision.transform.position,collision.transform.rotation);
+            GameObject deathEnemyParticle2 = Instantiate(deathEnemyParticle,collision.transform.position,collision.transform.rotation);
             tagetEnemy.TakeDamage(damage);
-            //AudioSource.PlayClipAtPoint(bulletSound,transform.position);
+            AudioSource.PlayClipAtPoint(bulletSound,transform.position);
             //Destroy(collision.gameObject);
-             //Destroy(deathEnemyParticle2,2f);
-            //GameObject bulletParticle2 =  Instantiate(bulletParticle,transform.position,transform.rotation);
-            //Destroy(gameObject);
-            //Destroy(bulletParticle2,2f);
-            //return;
+            Destroy(deathEnemyParticle2,2f);
+            GameObject bulletParticle2 =  Instantiate(bulletParticle,transform.position,transform.rotation);
+            Destroy(gameObject);
+            Destroy(bulletParticle2,2f);
+            return;
             }
         }
         if(collision.CompareTag("Ground"))
         {  Debug.Log("TRÚNG GROUND");
             GameObject bulletParticle2 =  Instantiate(bulletParticle,transform.position,transform.rotation);
             Destroy(bulletParticle2,2f);
+            Destroy(gameObject);
             return;
         }
     }

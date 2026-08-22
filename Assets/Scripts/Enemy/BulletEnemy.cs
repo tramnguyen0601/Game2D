@@ -30,17 +30,17 @@ public class BulletEnemy : MonoBehaviour
     }
    private void OnTriggerEnter2D(Collider2D collision)
    {
-        //if(collision.CompareTag("Player"))
-        //{
-            //HeartManager.instance.TakeDamage(damage);
-        IDamage taget = collision.GetComponent<IDamage>();
-        if(taget != null)
+        if(collision.CompareTag("Player"))
         {
-            taget.TakeDamage(damage);
-            Destroy(gameObject);
-            return;
+            //HeartManager.instance.TakeDamage(damage);
+            IDamage taget = collision.GetComponent<IDamage>();
+            if(taget != null)
+            {
+               taget.TakeDamage(damage);
+               Destroy(gameObject);
+               return;
+            }
         }
-        //}
         if (collision.CompareTag("Ground"))
         {
             Destroy(gameObject);
