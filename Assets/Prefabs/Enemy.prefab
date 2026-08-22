@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 608462009368037371}
   m_Layer: 8
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -414,7 +414,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 6de073ebca3cd8243b16a29f71c3a68e, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -652,6 +652,7 @@ GameObject:
   - component: {fileID: 6118494326950320554}
   - component: {fileID: 4977304329790042044}
   - component: {fileID: 6503458681901334365}
+  - component: {fileID: 6395543414365782934}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -742,6 +743,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6395543414365782934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906948875906291692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596fa7f566169154da62e3bf28ed02c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyCavas
 --- !u!1 &6667042686255874086
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,26 +31,26 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {    //Debug.Log("Bullet chạm: " + collision.name);
-        //if(collision.name == "Enemy")
-        //{   
-        IDamage tagetEnemy = collision.GetComponentInParent<IDamage>(); //dùng interface
-        if(tagetEnemy != null)
+        if(collision.name == "Enemy")
         {   
-            GameObject deathEnemyParticle2 = Instantiate(deathEnemyParticle,collision.transform.position,collision.transform.rotation);
+        IDamage tagetEnemy = collision.GetComponentInParent<IDamage>(); //dùng interface
+            if(tagetEnemy != null)
+            {   
+            //GameObject deathEnemyParticle2 = Instantiate(deathEnemyParticle,collision.transform.position,collision.transform.rotation);
             tagetEnemy.TakeDamage(damage);
-            AudioSource.PlayClipAtPoint(bulletSound,transform.position);
+            //AudioSource.PlayClipAtPoint(bulletSound,transform.position);
             //Destroy(collision.gameObject);
-             Destroy(deathEnemyParticle2,2f);
+             //Destroy(deathEnemyParticle2,2f);
             //GameObject bulletParticle2 =  Instantiate(bulletParticle,transform.position,transform.rotation);
             //Destroy(gameObject);
             //Destroy(bulletParticle2,2f);
-            return;
+            //return;
+            }
         }
-        //}
         if(collision.CompareTag("Ground"))
         {  Debug.Log("TRÚNG GROUND");
             GameObject bulletParticle2 =  Instantiate(bulletParticle,transform.position,transform.rotation);
-            Destroy(gameObject);
+            Destroy(bulletParticle2,2f);
             return;
         }
     }

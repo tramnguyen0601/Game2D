@@ -1716,7 +1716,6 @@ MonoBehaviour:
   deathParticle: {fileID: 7811564037975577830, guid: 25e261ed5cf13a84cb8169c83a374fed, type: 3}
   respawnParticle: {fileID: 846668489300173578, guid: a2fa5c87f1b759441aeaad2b7eea2366, type: 3}
   waitTimeDelay: 1
-  cameraController: {fileID: 330585548}
 --- !u!1 &170140762
 GameObject:
   m_ObjectHideFlags: 0
@@ -5524,7 +5523,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DeathGround
   penalty: 0
   damage: 1
-  cameraController: {fileID: 330585548}
 --- !u!1 &524998980
 GameObject:
   m_ObjectHideFlags: 0
@@ -5854,17 +5852,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1067471977}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &607669708 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3120561224474342947, guid: c3d566c14f5a0d34497e6a2deb11ce7a, type: 3}
-  m_PrefabInstance: {fileID: 1891620898}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
 --- !u!1 &613140830
 GameObject:
   m_ObjectHideFlags: 0
@@ -17369,14 +17356,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 693153309}
     m_Modifications:
-    - target: {fileID: 1385278297062778151, guid: c3d566c14f5a0d34497e6a2deb11ce7a, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2376703400751808520, guid: c3d566c14f5a0d34497e6a2deb11ce7a, type: 3}
-      propertyPath: valueProgressHP
-      value: 
-      objectReference: {fileID: 607669708}
     - target: {fileID: 3352669702133751454, guid: c3d566c14f5a0d34497e6a2deb11ce7a, type: 3}
       propertyPath: m_Name
       value: Enemy

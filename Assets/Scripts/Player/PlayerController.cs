@@ -8,24 +8,16 @@ using UnityEngine.InputSystem;
 using System.Collections;
 public class PlayerController:MonoBehaviour,IDamage,ILife
 {   
-    [SerializeField]
-    private float moveSpeed; //khai báo biến lưu tốc độ di chuyển của Player
-    [SerializeField]
-    private float jumpHeight;//Khai báo biến lưu tốc nhảy của Player
-    private Rigidbody2D rb;  //biến 
-    //check 
-    private bool jumpRequested;
-    //check ground
-    public bool isGrounded;
-    //check nhay 2 lan
-    private int jumpCount = 0;
-    public int maxJump;
-    //Doi tuong có vi tri trong khong gian (kiem tra dat o vi tri nao)
-    public Transform groundCheck; //có position, rotation, size
-    // ban kinh kiem tra mat dat
-    public float checkgroundRadius; // check ban kính chan player & ground
-    //xac dinh loai vat the nao la mat dat
-    public LayerMask groundLayer;
+    [SerializeField]private float moveSpeed;          //khai báo biến lưu tốc độ di chuyển của Player
+    [SerializeField]private float jumpHeight;         //Khai báo biến lưu tốc nhảy của Player
+    private Rigidbody2D rb;                           //biến lưu reference(tham chiếu) tới Rigidbody2D của Player;
+    private bool jumpRequested;                       // biến kiểm tra Player có được nhảy tiếp hay không?
+    public bool isGrounded;                           // biến kiểm tra Player có tiếp xúc Ground hay không?
+    private int jumpCount = 0;                       //biến lưu số lần đã nhảy của Player;
+    [SerializeField]private int maxJump;             //biến lưu số lần nhảy tối đa;
+    [SerializeField]private Transform groundCheck;   //biến kiểm tra Ground:position,rotation,size;
+    [SerializeField]private float checkgroundRadius; // biến lưu bán kính giữa chân Player & Ground;
+    [SerializeField]private LayerMask groundLayer;   //biến lưu Layer của Player;
     private Animator animator;
     //check trang thái quay: mặc định bên phải
     public Transform bulletPoint;
@@ -166,7 +158,7 @@ public class PlayerController:MonoBehaviour,IDamage,ILife
     }
     public void TakeDamage(int damage)
     {
-        HeartManager.instance.TakeDamage(damage);
+        HeartManager.instance.PlayerTakeDamage(damage);
     }
     public void AddLife(int life)
     {

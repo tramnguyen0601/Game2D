@@ -2,17 +2,13 @@ using UnityEngine;
 
 public class DeathGround : MonoBehaviour
 {
-    public int penalty;
-    public int damage;
-    public CameraController cameraController;
-    //Phat hien Player đi vao vung Trigger
+    [SerializeField]private int penalty;  //biến lưu điểm trừ khi va chạm
+    [SerializeField]private int damage;   //biến lưu trừ máu khi va chạm
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.name == "Player")
+        if(collision.CompareTag("Player"))
         {   
-            //cameraController.DeathCamera();
             LevelManager.instance.RespawnPlayer();
-            HeartManager.instance.TakeDamage(damage);
             IDamage taget = collision.GetComponent<IDamage>();
             if (taget!= null)
             {

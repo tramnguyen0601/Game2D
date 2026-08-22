@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HeartManager : MonoBehaviour,IDamage
+public class HeartManager : MonoBehaviour
 {
     [SerializeField]private int maxDamge = 5;                //biến lưu số lương tối đa máu/1 mạng;
     public int MaxDamageBar => maxDamge;
@@ -38,7 +38,7 @@ public class HeartManager : MonoBehaviour,IDamage
     {
         AddHeart();
     }
-    public void TakeDamage(int damage)
+    public void PlayerTakeDamage(int damage)
     {
         Debug.Log("voo");
         currentHeart = currentHeart - damage;

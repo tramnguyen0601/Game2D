@@ -109,6 +109,6 @@ public class EnemyController : MonoBehaviour
     }
     // public void TakeDamage(int damage)
     // {
-    //     HeartEnemyManager.instance.TakeDamage(damage);
+    //     HeartEnemyManager.instance.EnemyTakeDamage(damage);
     // }
 }

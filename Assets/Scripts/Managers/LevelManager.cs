@@ -7,42 +7,25 @@
 using System.Collections;
 using UnityEngine;
 public class LevelManager : MonoBehaviour
-{   //bien luu vi tri hoi sinh hien tai
-    private Vector3 respawnPoint;
-    //bien luu vi tri player cần hồi sinh
-    public Transform player;
-    public static LevelManager instance;
-    public GameObject deathParticle;
-    public GameObject respawnParticle;
-    public float waitTimeDelay;
-    public CameraController cameraController;
-    void Awake()
+{   
+    private Vector3 respawnPoint;           //biến lưu vị trí hồi sinh hiện tại của Player;
+    [SerializeField]private Transform player;                //biến lưu: vị trí, góc xoay, kích thước của Player;
+    public static LevelManager instance;    //cho phép các class khác truy cập vào đây;
+    [SerializeField]private GameObject deathParticle;       //biến lưu particle chết khi Khi Player va chạm đối tượng khác;
+    [SerializeField]private GameObject respawnParticle;     //biến lưu particle hồi sinh tại checkpoint đã đi qua;
+    [SerializeField]private float waitTimeDelay;
+    private void Awake()
     {
         instance = this;
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        //Ban đầu hồi sinh vị trí player đứng
-        respawnPoint = player.position;
+        respawnPoint = player.position; //lưu vị trí ban đầu đứng của Player;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    //Đưa Player về điểm hồi sinh ban đầu
+    //Đưa Player về điểm hồi sinh ban đầu luc vao start or đã đi qua vị trí checkpoint;
     public void RespawnPlayer()
-    
     {
         StartCoroutine(RespawnCorountine());
-       //Tao ban sao hieu ung chết: Nó là gì, nằm ở đâu, góc xoay
-    //    Instantiate(deathParticle,player.position,Quaternion.identity);
-
-    //    player.position = respawnPoint;
-    //    //Tao ban sao hieu ung hồi sinh: Nó là gì, nằm ở đâu, góc xoay
-    //    Instantiate(respawnParticle,respawnPoint,Quaternion.identity);
     }
     
      private IEnumerator RespawnCorountine()
@@ -50,24 +33,22 @@ public class LevelManager : MonoBehaviour
          Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
          rb.linearVelocity = Vector2.zero;
          rb.gravityScale = 0f;
+         //Tao bản sao hiệu ứng chết: Nó là gì, nằm ở đâu, góc xoay
         GameObject depthEffect = Instantiate(deathParticle,player.position,Quaternion.identity);
-        yield return new WaitForSeconds(0.5f);
-        player.gameObject.SetActive(false);
-        //cameraController.DeathCamera();
-        Destroy(depthEffect,2f);
-        player.position = respawnPoint;
-        //Tao ban sao hieu ung hồi sinh: Nó là gì, nằm ở đâu, góc xoay
+        yield return new WaitForSeconds(0.5f); //phát thời gian chờ 0.5f;
+        player.gameObject.SetActive(false);    //player chết bị ẩn đi;
+        Destroy(depthEffect,2f);               //hủy effect trên scene;
+        player.position = respawnPoint;        //lưu vị trí mới đã đi qua;
+        //Tao bản sao hiệu ứng hồi sinh: Nó là gì, nằm ở đâu, góc xoay
         GameObject respawnEffect = Instantiate(respawnParticle,respawnPoint,Quaternion.identity);
-        yield return new WaitForSeconds(0.5f);
-        player.gameObject.SetActive(true);
-        //cameraController.NormalCamera();
-         rb.linearVelocity = Vector2.zero;
-         rb.gravityScale = 5f;
-        Destroy(respawnEffect,2f);
+        yield return new WaitForSeconds(0.5f); //phát thời gian chờ 0.5f;
+        player.gameObject.SetActive(true);     //player chết hồi sinh->hiện;
+         rb.linearVelocity = Vector2.zero;     //vận tốc = 0;
+         rb.gravityScale = 5f;                 //trọng lực = 5;
+        Destroy(respawnEffect,2f);             //hủy effect trên scene;
          
      }
-
-    //Cập nhật điểm hồi sinh mới
+    //Hàm Cập nhật điểm hồi sinh mới
     public void UpdateCheckPoint(Vector3 newCheckpoint)
     {
        respawnPoint = newCheckpoint;
